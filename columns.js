@@ -26,6 +26,7 @@ function columns(id, width, gap, columns){
     if(columns <= 0){
       columns = 1;
     }
+    width = (div.offsetWidth - gap * (columns - 1)) / (columns);
   }
 
   //initialize an array to keep track of heights
@@ -37,11 +38,11 @@ function columns(id, width, gap, columns){
   //apply position changes
   for(var i in elements){
     var curImg = elements[i];
-    curImg.style.width = width;
+    curImg.style.width = width + "px";
     curImg.style.position = "absolute";
     var column = getLowest(heights);
-    curImg.style.left = (column * width + column * gap);
-    curImg.style.top = heights[column];
+    curImg.style.left = (column * width + column * gap) + "px";
+    curImg.style.top = heights[column] + "px";
     heights[column] += getImgHeight(curImg.src, width) + gap;
   }
 
